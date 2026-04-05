@@ -31,23 +31,12 @@ def login_secure():
     session['user'] = 'Guvenli_Kullanici'
     return redirect(url_for('index'))
 **
-
-Bunu da yaptıktan sonra GitHub sayfasının altından **"Commit changes"** butonuna bas. GitHub tarafı bitti, efsanevi bir repo oldu!
-
 ---
-
-### ADIM 2: Hocanın QLine Portalına Yazılacaklar (100 Puanlık Kısım)
-
-Hocanın sitesindeki o kutucuklara da şu teknik metinleri kopyalayıp yapıştır:
-
-**1. GITHUB DEPOSU Kutusuna:**
-👉 `https://github.com/hilal-tx/session-fixation-demo` (Kendi repo linkini yapıştır).
 
 **2. ÖZET / AMAÇ Kutusuna:**
 > Bu proje, web uygulamalarında oturum kimliklerinin (Session ID) güvenli yönetimiyle ilgili kritik bir zafiyet olan "Session Fixation (Oturum Sabitleme)" konusunu uygulamalı olarak göstermeyi amaçlamaktadır. Proje, Python Flask üzerinde çalışan canlı bir laboratuvar sunarak, bir kullanıcının kimliği doğrulandıktan sonra bile saldırganın önceden bildiği oturum kimliğini kullanmaya devam etmesinin yarattığı riski (Zafiyet) ve bu riskin her başarılı girişte oturum kimliğinin kriptografik olarak yenilenmesiyle (Savunma) nasıl kesin olarak engellendiğini kanıtlar.
 
-**3. MARKDOWN NOTLARI EKLE Kutusuna (Teknik Rapor):**
-Aşağıdaki blokta yer alan metni kopyala ve o büyük kutuya yapıştır:
+
 
 ***
 
