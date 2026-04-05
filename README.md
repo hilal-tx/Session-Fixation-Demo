@@ -1,8 +1,11 @@
 # 🛡️ Session Fixation (Oturum Sabitleme) Vulnerability & Defense Lab
 
-🇹🇷 **Türkçe** 
+🇹🇷 **Türkçe**
+
 📘 **Ders:** Güvenli Web Yazılımı Geliştirme 
+
 🎯 **Görev:** Vize Projesi  
+
 👤 **Hazırlayan:** Hilal Şengül 
 
 ## 📖 Proje Özeti
