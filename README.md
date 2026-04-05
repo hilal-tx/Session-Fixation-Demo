@@ -1,7 +1,9 @@
 # 🛡️ Session Fixation (Oturum Sabitleme) Vulnerability & Defense Lab
 
 🇹🇷 **Türkçe** 
-
+📘 **Ders:** Güvenli Web Yazılımı Geliştirme 
+🎯 **Görev:** Vize Projesi  
+👤 **Hazırlayan:** Hilal Şengül 
 
 ## 📖 Proje Özeti
 Bu proje, **Güvenli Web Geliştirme** dersi kapsamında, oturum yönetimindeki en kritik zafiyetlerden biri olan **Session Fixation (Oturum Sabitleme)** saldırısını simüle etmek ve çözüm yollarını uygulamalı olarak göstermek amacıyla geliştirilmiştir. 
