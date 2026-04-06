@@ -45,5 +45,12 @@ Bu senaryoda uygulama, giriş yapıldığı an `session.clear()` ve oturum yenil
 ## 🚀 Kurulum ve Çalıştırma
 Projenin yerel makinede çalıştırılması için:
 1. Gerekli kütüphaneleri kurun: `pip install flask`
-2. Uygulamayı başlatın: `python app.py`
-3. Tarayıcıdan `http://127.0.0.1:5000` adresine giderek testleri gerçekleştirin.
+4. Uygulamayı başlatın: `python app.py`
+5. Tarayıcıdan `http://127.0.0.1:5000` adresine giderek testleri gerçekleştirin.
+
+---
+
+## 🎥 Demo
+
+Uygulamanın zafiyet ve çözüm adımlarını gösteren demo videosunu aşağıdaki lokasyondan izleyebilirsiniz:
+- `demo/project-demo.webm`
