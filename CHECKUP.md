@@ -107,3 +107,24 @@ Healthy open-source engineering demands discipline, CI/CD, and properly formatte
 > _"Bu sistem statik bir kağıt sınavı değil, canlı bir yazılım ekosistemidir. Siz commit atmasanız bile sistem periyodik olarak açık kaynak sağlık taramasını tekrarlar. Kodunuz yerinde saysa da teknoloji ve beklentiler ilerler."_ — **K. Arasteh**
 
 You can continuously improve your repository up until the final deadline. Pushing cleanly structured commits and refactoring your architecture will immediately trigger the AI engine to update your metrics dynamically.
+
+---
+
+## 🤖 AI Agentic Code Review (Deep-Dive)
+
+### 🧠 Code Quality & Architecture
+**Rating**: ⭐⭐ Good (Clear PoC with Web UI)
+A single-file Flask application with an embedded HTML interface demonstrating session fixation attacks. The dual-endpoint approach (`/login_vulnerable` vs `/login_secure`) provides a clear side-by-side comparison with visual session ID tracking.
+
+### 🛡️ Vulnerability Reproduction
+The vulnerable login (`/login_vulnerable`) sets `session['user']` without regenerating the session ID. If an attacker pre-fixes a session cookie, the victim's authentication binds to the attacker's known session ID — a classic **Session Fixation (CWE-384)** attack.
+
+### 🔒 Defensive Fix
+The secure login (`/login_secure`) applies the correct countermeasure: `session.clear()` followed by `session.permanent = True`, which triggers Flask to regenerate the session identifier. This is the standard OWASP-recommended session fixation defense.
+
+### ⚠️ Areas for Improvement
+- No tests, limited codebase depth
+- The Dockerfile is present — good containerization
+- Consider adding Redis-backed session storage for production scenarios
+
+**Verdict**: A clean and pedagogically effective demonstration of session fixation with proper defensive implementation. The visual session ID display in the web UI makes the attack immediately understandable.
