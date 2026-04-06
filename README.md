@@ -8,13 +8,13 @@
 
 👤 **Hazırlayan:** Hilal Şengül 
 
-# 🛡️ Brute Force Defender Simülatörü
-![Security](https://img.shields.io/badge/İstinye-BGT-red) ![Python](https://img.shields.io/badge/Python-3.x-blue)
+# 🛡️ Session Fixation Demo Lab
+![Web Security](https://img.shields.io/badge/OWASP-A01-blue) ![Status](https://img.shields.io/badge/Status-Success-green)
 
 ## 📑 İçindekiler
-* [Proje Mimarisi](#proje-mimarisi)
-* [Teknik Analiz](#teknik-analiz)
-* [Tehdit Modelleme](#tehdit-modelleme)
+* [Zafiyet Analizi](#zafiyet-analizi)
+* [Güvenli Kodlama](#güvenli-kodlama)
+* [Docker Kurulumu](#docker-kurulumu)
 
 ## 📖 Proje Özeti
 Bu proje, **Güvenli Web Geliştirme** dersi kapsamında, oturum yönetimindeki en kritik zafiyetlerden biri olan **Session Fixation (Oturum Sabitleme)** saldırısını simüle etmek ve çözüm yollarını uygulamalı olarak göstermek amacıyla geliştirilmiştir. 
