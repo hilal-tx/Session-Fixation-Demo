@@ -53,4 +53,5 @@ Projenin yerel makinede çalıştırılması için:
 ## 🎥 Demo
 
 Uygulamanın zafiyet ve çözüm adımlarını gösteren demo videosunu aşağıdaki lokasyondan izleyebilirsiniz:
+
 ./demo/project-demo.webm
