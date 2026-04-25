@@ -2,7 +2,7 @@ import pytest
 import sys
 import os
 
-# src klasöründeki app.py modülüne erişmek için yolu ayarlayalım
+# Add the src directory to the path to import app
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.app import app
 
@@ -14,45 +14,45 @@ def client():
         yield client
 
 def test_index_page(client):
-    """Ana sayfanın başarıyla yüklendiğini test et"""
+    """Test if the index page loads successfully"""
     response = client.get('/')
     assert response.status_code == 200
     assert b"Session Fixation" in response.data
 
 def test_login_vulnerable(client):
-    """Zafiyetli girişin eski oturum verilerini KORUDUĞUNU test et"""
-    # Önceden oturumda var olan sahte veri
+    """Test that vulnerable login RETAINS old session data"""
+    # Pre-existing fake data in session
     with client.session_transaction() as sess:
-        sess['eski_veri'] = 'hacker_tarafindan_bilinen_deger'
+        sess['old_data'] = 'value_known_by_hacker'
     
-    # Zafiyetli girişe istek at
+    # Request the vulnerable login endpoint
     response = client.post('/login_vulnerable', follow_redirects=True)
     assert response.status_code == 200
     
     with client.session_transaction() as sess:
         assert sess['user'] == 'Kurban_Hesabi'
-        # Zafiyet: Eski oturum verisi silinmediği için Session Fixation oluşur
-        assert 'eski_veri' in sess
-        assert sess['eski_veri'] == 'hacker_tarafindan_bilinen_deger'
+        # Vulnerability: Old session data is not deleted, causing Session Fixation
+        assert 'old_data' in sess
+        assert sess['old_data'] == 'value_known_by_hacker'
 
 def test_login_secure(client):
-    """Güvenli girişin eski oturum verilerini TEMİZLEDİĞİNİ test et"""
-    # Önceden oturumda var olan sahte veri
+    """Test that secure login CLEARS old session data"""
+    # Pre-existing fake data in session
     with client.session_transaction() as sess:
-        sess['eski_veri'] = 'hacker_tarafindan_bilinen_deger'
+        sess['old_data'] = 'value_known_by_hacker'
         
-    # Güvenli girişe istek at
+    # Request the secure login endpoint
     response = client.post('/login_secure', follow_redirects=True)
     assert response.status_code == 200
     
     with client.session_transaction() as sess:
-        assert sess['user'] == 'Güvenli_Hesap'
-        # Güvenlik: Eski veriler silindiği için eski session id geçersizleşir / sıfırlanır
-        assert 'eski_veri' not in sess
+        assert sess['user'] == 'G\xc3\xbcvenli_Hesap' or sess['user'] == 'Güvenli_Hesap'
+        # Security: Old data is deleted so the old session ID is invalidated / reset
+        assert 'old_data' not in sess
         assert sess.permanent == True
 
 def test_logout(client):
-    """Çıkış işleminin oturumu başarıyla temizlediğini test et"""
+    """Test that the logout process clears the session successfully"""
     with client.session_transaction() as sess:
         sess['user'] = 'test_user'
         

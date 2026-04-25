@@ -18,7 +18,7 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: "3.11"
-        cache: 'pip' # Bağımlılıkları önbelleğe almak için
+        cache: 'pip'
         
     - name: Install dependencies
       run: |
@@ -26,7 +26,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pip install pytest
         
-    - name: Run Tests
+    - name: Run tests
       run: |
-        echo "Bağımlılıklar kuruldu ve testler çalıştırılıyor..."
+        echo "Dependencies installed, running tests..."
         pytest tests/
