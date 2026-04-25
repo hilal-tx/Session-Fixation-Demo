@@ -1,15 +1,32 @@
-name: Session Fixation Check
-on: [push]
+name: Python CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
 jobs:
-  test:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-      - name: Install dependencies
-        run: pip install flask
-      - name: Test App
-        run: python app.py & sleep 5
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+        cache: 'pip' # Bağımlılıkları önbelleğe almak için
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install pytest
+        
+    - name: Run Tests
+      run: |
+        echo "Bağımlılıklar kuruldu ve testler çalıştırılıyor..."
+        pytest tests/
